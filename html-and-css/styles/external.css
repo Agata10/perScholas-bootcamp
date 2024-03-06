@@ -4,6 +4,23 @@ body {
     font-size: 1.1em;
 }
 
+/*descendant*/
+section p {
+    background-color: aquamarine;
+}
+
+section>div {
+    color: red;
+}
+
+h2+p {
+    color: blue;
+}
+
+/* h2~p {
+    background-color: blue;
+} */
+
 h1 {
     color: coral;
 }

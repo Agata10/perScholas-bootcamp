@@ -17,6 +17,10 @@ h2+p {
     color: blue;
 }
 
+body>p {
+    color: red;
+}
+
 /* h2~p {
     background-color: blue;
 } */

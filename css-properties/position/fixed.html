@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Position Relative</title>
+    <title>Position Fixed</title>
     <style>
       /*
         Emmet shortcut mt margin top
@@ -11,11 +11,14 @@
         Emmet shortcut h height
         Emmet shortcut l left
         Emmet shortcut bd border shorthand:
-        Emmet shortcut pos:r position:relative
 
         Type selector =     div
         Class selector =    .exampleBox
         */
+
+      body {
+        height: 10000px;
+      }
 
       div {
         width: 100px;
@@ -27,22 +30,18 @@
         background-color: lightcoral;
         width: 100px;
         height: 100px;
-        position: relative;
+        position: fixed;
       }
     </style>
   </head>
   <body>
-    <h1>Position Relative</h1>
+    <h1>Position Fixed</h1>
 
     <p>
-      The <strong>element</strong> is positioned according to the normal flow of
-      the document, and then offset relative to itself based on the values of
-      top, right, bottom, and left.
-      <strong
-        >The offset does not affect the position of any other elements;</strong
-      >
-      thus, the space given for the element in the page layout is the same as if
-      position were static.
+      The element is removed from the normal document flow,
+      <strong>and no space is created for the element in the page layout</strong
+      >. It is positioned relative to the viewport. Its final position is
+      determined by the values of top, right, bottom, and left.
     </p>
 
     <div>Div 1</div>
@@ -50,3 +49,4 @@
     <div>Div 3</div>
   </body>
 </html>
+f ... l Wyświetlam fixed.html.

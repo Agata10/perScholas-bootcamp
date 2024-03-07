@@ -1,0 +1,8 @@
+#content {
+    display: block;
+    width: 300px;
+}
+
+#content form {
+    display: block;
+}

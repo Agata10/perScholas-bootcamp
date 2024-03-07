@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red Login</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+      }
+      .content {
+        display: block;
+        width: 300px;
+        background-color: rgb(237, 97, 97);
+        padding: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 5px 5px 2px rgb(82, 81, 81);
+        color: white;
+        position: absolute;
+        top: 20%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      input,
+      select {
+        background-color: rgba(39, 38, 38, 0.3);
+        border: none;
+        height: 30px;
+        color: white;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      textarea {
+        background-color: rgba(39, 38, 38, 0.3);
+        color: white;
+        border: none;
+        resize: none;
+      }
+
+      input::placeholder {
+        color: white;
+      }
+
+      h3,
+      p {
+        margin: 0;
+        text-align: center;
+        color: white;
+      }
+
+      h3 {
+        font-size: 2em;
+      }
+
+      p {
+        padding-bottom: 5px;
+      }
+
+      form {
+        display: block;
+        gap: 15px;
+        width: 100%;
+      }
+
+      input[type="button"] {
+        height: 60px;
+        background-color: white;
+        color: red;
+        box-shadow: 0px 5px 5px -2px black;
+      }
+
+      input::placeholder {
+        padding: 10px;
+        font-size: 10px;
+      }
+
+      select {
+        padding-left: 10px;
+      }
+
+      textarea {
+        font-size: 10px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div>
+        <img src="./x.svg" alt="cancel" />
+        <h3>Get in Touch</h3>
+        <p>Good choice...</p>
+      </div>
+      <form>
+        <input type="text" placeholder="Your name please" />
+        <input type="email" placeholder="A conatct email" />
+        <select name="choose" id="about">
+          <option value="About a new project" disabled selected>
+            About a new project
+          </option>
+          <option value="something">something</option>
+          <option value="new">new</option>
+        </select>
+        <textarea name="help" id="help" cols="46" rows="10">
+How can I help?</textarea
+        >
+        <input type="button" value="Send Message" />
+      </form>
+    </div>
+  </body>
+</html>

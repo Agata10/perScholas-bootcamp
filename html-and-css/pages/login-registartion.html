@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login&Registration</title>
+    <style>
+      body {
+        display: flex;
+        gap: 100px;
+      }
+
+      #loginForm {
+        display: block;
+        padding: 10px;
+        height: 180px;
+      }
+
+      form > input {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline !important;
+      }
+
+      input {
+        width: 80%;
+      }
+
+      input[type="button"] {
+        text-align: center;
+        width: 80px;
+        margin: 0 auto;
+      }
+
+      #registerForm {
+        display: block;
+        padding: 10px;
+      }
+
+      #registerForm input {
+        width: 95%;
+      }
+
+      #registerForm fieldset {
+        width: 88%;
+      }
+
+      #gender {
+        display: inline-block;
+      }
+
+      #gender div {
+        display: inline;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        width: 12px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      id="loginForm"
+      action="#"
+      style="border: 1px solid black; width: 220px; padding: 10px"
+    >
+      <h3 style="margin: 2px; margin-bottom: 3px">Login page</h3>
+      <label for="email">Email</label>
+      <input type="email" placeholder="Enter Your Email" id="email" />
+      <label for="pass">Password</label>
+      <input type="password" placeholder="Enter Your Password" id="pass" />
+      <br />
+      <input type="button" value="Login" />
+    </form>
+
+    <form
+      id="registerForm"
+      action="#"
+      style="border: 1px solid black; width: 450px; padding: 10px"
+    >
+      <h3 style="margin: 2px; margin-bottom: 3px">Register page</h3>
+      <label for="first">First Name</label>
+      <input type="text" placeholder="Enter Your First Name" id="first" />
+      <label for="last">Last Name</label>
+      <input type="text" placeholder="Enter Your Last name" id="last" />
+      <label for="email">Email</label>
+      <input type="email" placeholder="Enter Your Email" id="email" />
+      <label for="pass">Password</label>
+      <input type="password" placeholder="Enter Your Password" id="pass" />
+      <label for="conf">Password</label>
+      <input type="password" placeholder="Confirm Your Password" id="conf" />
+      <fieldset id="gender">
+        <legend>Gender</legend>
+        <div>
+          <label for="female">Female</label>
+          <input type="radio" name="female" id="female" />
+        </div>
+        <div>
+          <label for="male">Male</label>
+          <input type="radio" name="female" id="male" />
+        </div>
+      </fieldset>
+      <label for="date">Date of Birth</label>
+      <input type="date" id="date" />
+      <fieldset>
+        <legend>Habits</legend>
+        <label for="sports">You like sports</label>
+        <input type="checkbox" name="sports" id="sports" />
+        <label for="eat">You like to eat</label>
+        <input type="checkbox" name="eat" id="eat" />
+        <label for="sleep">You like to sleep</label>
+        <input type="checkbox" name="sleep" id="sleep" />
+      </fieldset>
+      <br />
+      <input type="button" value="Register" />
+    </form>
+  </body>
+</html>

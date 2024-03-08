@@ -8,7 +8,6 @@ body {
 header {
     height: 150px;
     background-image: url(./images/background.jpg);
-    position: relative;
     width: 100%;
     margin-bottom: 40px;
 }

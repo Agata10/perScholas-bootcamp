@@ -1,8 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .container {
     display: flex;
+    width: 350px;
+    height: 300px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: space-between;
 }
 
 .boxes {
+    /* align-content: space-between; */
     border: 0.1px solid;
     width: 99px;
     height: 99px;
@@ -34,10 +47,10 @@
     background-color: orange;
 }
 
-#box7 {
+/* #box7 {
     background-color: beige;
 }
 
 #box8 {
     background-color: lightgrey;
-}
+} */

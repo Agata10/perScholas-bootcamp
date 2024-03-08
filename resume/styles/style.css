@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+.main_container {
+    width: 80%;
+
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.section1 {
+    height: 300px;
+    width: 100%;
+    background-color: black;
+}
+
+.section1 h1 {
+    color: white;
+}
+
+.section1 h4 {
+    color: rgb(31, 148, 159);
+}
+
+.section1 img {
+    width: 100px;
+    height: 150px;
+}
+
+.section2 {
+    width: 70%;
+    background-color: aqua;
+    height: 80%;
+}
+
+.section3 {
+    width: 30%;
+    background-color: bisque;
+    height: 80%;
+}

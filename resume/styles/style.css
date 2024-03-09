@@ -3,7 +3,6 @@ body {
     padding: 0;
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
     background-color: black;
 
     display: flex;
@@ -12,10 +11,10 @@ body {
 
 .main_container {
     width: 60%;
+    background-color: rgb(42, 42, 42);
 
     display: flex;
     flex-flow: row wrap;
-    background-color: rgb(42, 42, 42);
 }
 
 .section1 {
@@ -30,10 +29,10 @@ body {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    width: calc(60% - 100px);
+    width: calc(60% - 50px);
     height: 150px;
 
-    padding-left: 100px;
+    padding-left: 50px;
 }
 
 .card1 h1 {
@@ -56,7 +55,7 @@ body {
 
 .card2 {
     height: 150px;
-    width: calc(40% - 100px);
+    width: calc(40% - 50px);
     display: flex;
 }
 
@@ -73,24 +72,80 @@ body {
 }
 
 .card3,
-.list-grey {
+.list-grey,
+p,
+h6 {
     color: rgb(106, 106, 106);
 }
 
 .card3 {
-    padding: 15px 90px;
+    padding: 15px 30px;
 }
 
+/*SECTION2 */
+
 .section2 {
-    width: 70%;
-    background-color: aqua;
-    height: 80%;
+    width: 62%;
+    padding: 30px;
+}
+
+.employment,
+.education {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    background-color: rgb(67, 66, 66);
+}
+
+.header img {
+    background-color: rgb(31, 148, 159);
+    height: 100%;
+    width: 38px;
+}
+
+.header h3 {
+    margin: 10px 0;
+    color: white;
+    padding: 8px;
+}
+
+.title {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+
+.title h3,
+.title h6 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.title h3 {
+    width: 50%;
+    color: white;
+}
+
+.title h3.date {
+    color: rgb(106, 106, 106);
+    font-weight: 300;
+    text-align: right;
+}
+
+.title h6 {
+    font-size: 1rem;
 }
 
 .section3 {
     width: 30%;
-    background-color: bisque;
-    height: 80%;
+    background-color: rgb(186, 134, 71);
 }
 
 @media only screen and (max-width: 1300px) {

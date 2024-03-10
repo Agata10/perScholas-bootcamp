@@ -155,9 +155,133 @@ h6 {
     font-size: 1rem;
 }
 
+/* SECTION#*/
+
 .section3 {
     width: 30%;
-    background-color: rgb(186, 134, 71);
+    padding-left: 15px;
+}
+
+.section3 h3 {
+    font-size: 1.2em;
+    color: white;
+}
+
+.skills-box1 p {
+    margin: 20px 0 2px 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.skills-box1 div {
+    color: white;
+}
+
+.grey-rectangle {
+    background-color: rgb(67, 66, 66);
+    height: 30px;
+    width: 90%;
+}
+
+.color-90,
+.color-80,
+.color-93,
+.color-80-yellow,
+.color-70 {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.color-90 {
+    background-color: rgb(0, 98, 255);
+    width: 90%;
+}
+
+.color-80 {
+    background-color: rgb(4, 131, 221);
+    width: 80%;
+}
+
+.color-93 {
+    background-color: green;
+    width: 93%;
+}
+
+.color-80-yellow {
+    background-color: rgb(161, 169, 79);
+    width: 70%;
+}
+
+.color-70 {
+    background-color: rgb(225, 117, 35);
+    width: 70%;
+}
+
+.skills-box2 ul {
+    list-style-type: square;
+    color: rgb(106, 106, 106);
+    font-size: 1.2rem;
+}
+
+.skills-box2 ul li::marker {
+    font-size: 1.8rem;
+}
+
+.skills-box2 ul li:nth-child(1)::marker {
+    color: rgb(4, 131, 221);
+}
+
+.skills-box2 ul li:nth-child(2)::marker {
+    color: rgb(4, 131, 221);
+}
+
+.skills-box2 ul li:nth-child(3)::marker {
+    color: green;
+}
+
+.skills-box2 ul li:nth-child(4)::marker {
+    color: rgb(161, 169, 79);
+}
+
+.skills-box2 ul li:nth-child(5)::marker {
+    color: rgb(225, 117, 35);
+}
+
+.pol,
+.eng {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 2px;
+}
+
+.pol p,
+.eng p {
+    font-size: 1.2rem;
+    padding-right: 10px;
+}
+
+.pol p {
+    padding-right: 22px;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: rgb(67, 66, 66);
+    width: 30px;
+    height: 30px;
+}
+
+.pol .color {
+    background-color: rgb(16, 95, 95);
+}
+
+.eng .color {
+    background-color: green;
 }
 
 @media only screen and (max-width: 699px) {
@@ -180,7 +304,7 @@ h6 {
     }
 
     .card1 img {
-        padding-left: 15px;
+        padding-left: 10px;
     }
 
     .card2 {
@@ -233,6 +357,13 @@ h6 {
 
     .section3 {
         width: 100%;
+        padding-left: 30px;
     }
 
+}
+
+@media only screen and (min-width: 1225px) and (max-width: 1556px) {
+    .section3 {
+        padding: 0;
+    }
 }

@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    width: calc(60% - 50px);
+    width: calc(50% - 50px);
     height: 150px;
 
     padding-left: 50px;
@@ -55,12 +55,16 @@ body {
 
 .card2 {
     height: 150px;
-    width: calc(40% - 50px);
+    width: calc(40%);
     display: flex;
 }
 
 .card2 ul {
     list-style-type: none;
+}
+
+.card2>ul:last-child {
+    text-align: left;
 }
 
 .card2 ul li {
@@ -69,6 +73,7 @@ body {
 
 .list-white {
     color: white;
+    text-align: right;
 }
 
 .card3,
@@ -101,18 +106,24 @@ h6 {
     flex-direction: row;
     gap: 5px;
     background-color: rgb(67, 66, 66);
+    height: 50px;
 }
 
 .header img {
     background-color: rgb(31, 148, 159);
-    height: 100%;
-    width: 38px;
+    width: 40px;
+    height: 50px;
+}
+
+.education .header img {
+    background-color: rgb(25, 130, 67);
 }
 
 .header h3 {
     margin: 10px 0;
     color: white;
-    padding: 8px;
+    padding: 4px;
+    font-size: 1.5em;
 }
 
 .title {
@@ -120,6 +131,7 @@ h6 {
     flex-wrap: wrap;
 
     width: 100%;
+    margin-top: 10px;
 }
 
 .title h3,
@@ -148,12 +160,55 @@ h6 {
     background-color: rgb(186, 134, 71);
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 699px) {
+
+    .main_container {
+        align-items: center;
+        justify-content: center;
+    }
+
     .section1 {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+
+    .card1 {
+        width: 100%;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .card1 img {
+        padding-left: 15px;
+    }
+
+    .card2 {
+        padding-right: 0px;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .card2 ul {
+        padding-left: 12px;
+    }
+
+    .card3 {
+        padding: 15px 25px;
+        text-align: justify;
+    }
+
+    .section2 {
+        width: 90%;
+    }
+
+    .section3 {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1224px) {
 
     .card1 {
         padding-left: 0;
@@ -164,11 +219,20 @@ h6 {
     .card2 {
         width: 100%;
         justify-content: center;
+        padding-right: 50px;
     }
 
     .card3 {
-        padding: 15px 20px;
-        text-align: left;
+        padding: 15px 45px;
+        text-align: justify;
+    }
+
+    .section2 {
+        width: 100%;
+    }
+
+    .section3 {
+        width: 100%;
     }
 
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      div {
+        width: 300px;
+        height: 200px;
+      }
+
+      #box1 {
+        background-color: green;
+        transition-property: background-color;
+        transition-duration: 2s;
+      }
+
+      #box1:hover {
+        background-color: lightskyblue;
+      }
+
+      #box2 {
+        background-color: yellow;
+        transition-property: font-size;
+        transition-duration: 2s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #box2:hover {
+        font-size: 100px;
+      }
+
+      #box3 {
+        background-color: pink;
+        transition: width 2s, height 2s;
+        /* transition-duration: 2s; */
+      }
+
+      #box3:hover {
+        width: 200px;
+        height: 200px;
+      }
+
+      #box4 {
+        background-color: blue;
+        transition-duration: 0.6s;
+      }
+
+      #box4:hover {
+        transform: translateX(100px);
+      }
+
+      #box5 {
+        background-color: red;
+        transition-duration: 3s;
+      }
+
+      #box5:hover {
+        transform: rotate(360deg);
+      }
+
+      #box6 {
+        color: black;
+        background-color: white;
+        border: 2px solid blue;
+        transition-property: color, background-color, border-color;
+        transition-duration: 1s;
+      }
+
+      #box6:hover {
+        color: white;
+        background-color: black;
+        border-color: red;
+        transform: rotate(360deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1"></div>
+    <div id="box2">Hello</div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <div id="box5"></div>
+    <div id="box6">TEXT</div>
+  </body>
+</html>

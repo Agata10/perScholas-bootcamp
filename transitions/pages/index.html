@@ -58,10 +58,16 @@
 
       #box5 {
         background-color: red;
-        transition-duration: 3s;
+        /* transition-duration: 3s;
+        transition-timing-function: ease-out;
+        transition-delay: 1s; */
+      }
+      p {
+        transition-duration: 2s;
       }
 
-      #box5:hover {
+      p:hover {
+        transform-origin: 0 0;
         transform: rotate(360deg);
       }
 
@@ -86,7 +92,7 @@
     <div id="box2">Hello</div>
     <div id="box3"></div>
     <div id="box4"></div>
-    <div id="box5"></div>
+    <div id="box5"><p>Hello</p></div>
     <div id="box6">TEXT</div>
   </body>
 </html>

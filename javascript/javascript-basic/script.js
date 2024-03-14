@@ -23,3 +23,11 @@ console.log(myVariable); ///22222 is printed, doenst happen with let or var
 muliline
 comment
 */
+
+//Numbers
+
+let number = (3 + 3) * (8 / (10 - 3));
+console.log(number);
+
+// +=
+// -= shortcuts

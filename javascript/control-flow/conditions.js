@@ -59,13 +59,15 @@ if (num > 0) {
 // }
 
 //exercise 2
-let num2 = 10;
+let num2 = -110;
 
-if (num2 > 0 && num2 > 100) {
-  console.log(`Number is positsive and greater than 100.: ${num2}`);
-} else if (num2 > 0 && num2 < 100) {
-  console.log(`Number is positive but less than 100: ${num2}`);
-} else {
+if (num2 > 0) {
+  if (num2 > 100) {
+    console.log(`Number is positsive and greater than 100.: ${num2}`);
+  } else {
+    console.log(`Number is positive but less than 100: ${num2}`);
+  }
+} else if (num2 < 0) {
   console.log("Number is negative.");
 }
 

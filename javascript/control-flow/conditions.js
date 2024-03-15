@@ -21,3 +21,11 @@ console.log(x);
     console.log(z); //will work because is in the block
   }
 }
+
+if (x == 5) {
+  console.log("WE got five!");
+} else if (x == 3) {
+  console.log("We got 3");
+} else {
+  console.log("we didnt get 5 or 3");
+}

@@ -84,3 +84,15 @@ if (score >= 90) {
 } else {
   console.log("F");
 }
+
+///ERRORS
+
+try {
+  if (x < 0) {
+    console.log("negative");
+  } else {
+    throw "Error-number is positive";
+  }
+} catch (error) {
+  console.log("Error: " + error);
+}

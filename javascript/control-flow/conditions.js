@@ -22,10 +22,22 @@ console.log(x);
   }
 }
 
+//if condition
+
 if (x == 5) {
   console.log("WE got five!");
 } else if (x == 3) {
   console.log("We got 3");
 } else {
   console.log("we didnt get 5 or 3");
+}
+
+//falsy
+
+let money; // -> undefined
+
+if (money) {
+  console.log("got money value");
+} else {
+  console.log(`money is ${money}`);
 }

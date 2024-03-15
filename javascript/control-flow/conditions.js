@@ -12,8 +12,8 @@ console.log("Test");
 //will return 5 with var, if we change var to let/const it wont, let is blocked scoped
 console.log(x);
 
+//////////////////////////////////////
 //let example
-
 {
   let z = x + 5;
 
@@ -23,7 +23,6 @@ console.log(x);
 }
 
 //if condition
-
 if (x == 5) {
   console.log("WE got five!");
 } else if (x == 3) {
@@ -33,11 +32,28 @@ if (x == 5) {
 }
 
 //falsy
-
 let money; // -> undefined
 
 if (money) {
   console.log("got money value");
 } else {
   console.log(`money is ${money}`);
+}
+
+///////////////////////////////////////////
+//exercise 1
+let num = 5;
+
+if (num > 0) {
+  console.log("Num is positive1");
+} else {
+  console.log("Num is negative");
+}
+
+//check is user is more than 18
+let age = prompt("Type your age:");
+if (age >= 18) {
+  alert("Welcome");
+} else {
+  alert("Come back when you grew up");
 }

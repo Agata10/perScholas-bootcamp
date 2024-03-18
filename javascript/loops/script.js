@@ -115,4 +115,27 @@ while (change > 0) {
   change -= 0.25;
   quarters++;
 }
-console.log(quarters);
+//console.log(quarters);
+
+//output 10,30,50,70,90
+let i = 10;
+while (i <= 90) {
+  // console.log(i);
+  i += 20;
+}
+
+//output 20,40,60,80,100
+let j = 20;
+while (j <= 100) {
+  console.log(j);
+  j += 20;
+}
+
+//all numbers 500-800, only the one divisible by 4
+let k = 500;
+while (k <= 800) {
+  if (k % 4 === 0) {
+    console.log(k);
+  }
+  k++;
+}

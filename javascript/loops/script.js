@@ -151,9 +151,17 @@ outer: for (let i = 2; i <= 20; i++) {
     }
   }
   if (isPrime) {
-    console.log(i);
+    // console.log(i);
   }
 }
 
 // labeled loops
-myLoop: while (true) {}
+//myLoop: while (true) {}
+
+let sum1 = 0;
+for (let i = 0; i < 5; i++) {
+  if (i % 2 === 0) continue;
+  sum1 += i;
+}
+
+console.log(sum1);

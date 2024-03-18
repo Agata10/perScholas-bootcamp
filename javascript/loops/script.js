@@ -55,10 +55,64 @@ for (let i = 0; i < str.length; i++) {
 
 //properties
 for (const i in str) {
-  //console.log(str[i]);
+  // console.log(str[i]);
 }
 
 //values
 for (const i of str) {
   // console.log(i);
 }
+
+//while exercise
+//count down to 0
+// let i = 10;
+// while (i >= 0) {
+//   console.log(i);
+//   i--;
+// }
+
+// let j = 1;
+// while (j < 35) {
+//   console.log(j);
+//   j += 3;
+// }
+
+//or
+//let j = 1;
+// while (j < 35) {
+//   j++;
+//   if (j % 3 === 0) {
+//     console.log(j);
+//   }
+// }
+
+//multiplies by 5, less than 100
+// let j = 1;
+// while (j < 100) {
+//   if (j % 5 === 0) {
+//     console.log(j);
+//   }
+//   j++;
+// }
+
+//print from 0 to 20
+//all numbers divide by 2 should be multiplied by 3 in output
+// let i = 0;
+// while (i <= 20) {
+//   if (i % 2 === 0) {
+//     console.log(i * 3);
+//   } else {
+//     continue;
+//   }
+//   i++;
+// }
+
+let cost = 4;
+let bill = 10;
+let change = bill - cost; // 6
+let quarters = 0;
+while (change > 0) {
+  change -= 0.25;
+  quarters++;
+}
+console.log(quarters);

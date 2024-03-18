@@ -38,8 +38,27 @@ for (let i = 1; i <= 7; i++) {
 }
 
 //iterates from 1 to 20
-for (let i = 2; i <= i ** 2; i++) {
+for (let i = 2; i <= 2; i++) {
   if (i % i == 0) {
     console.log("Prime: " + i);
   }
+}
+
+// strings for loop
+const str = "Hello World";
+for (let i = 0; i < str.length; i++) {
+  if (str[i] === "l") {
+    continue;
+  }
+  console.log(str[i]);
+}
+
+//properties
+for (const i in str) {
+  //console.log(str[i]);
+}
+
+//values
+for (const i of str) {
+  // console.log(i);
 }

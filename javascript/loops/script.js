@@ -142,15 +142,18 @@ while (k <= 800) {
 
 //print all prime number between 0 and 20
 
-for (let i = 2; i <= 20; i++) {
+outer: for (let i = 2; i <= 20; i++) {
   let isPrime = true;
   for (let j = 2; j < i; j++) {
     if (i % j == 0) {
       isPrime = false;
-      break;
+      break outer;
     }
   }
   if (isPrime) {
     console.log(i);
   }
 }
+
+// labeled loops
+myLoop: while (true) {}

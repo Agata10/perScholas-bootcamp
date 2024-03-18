@@ -127,7 +127,7 @@ while (i <= 90) {
 //output 20,40,60,80,100
 let j = 20;
 while (j <= 100) {
-  console.log(j);
+  //console.log(j);
   j += 20;
 }
 
@@ -135,7 +135,22 @@ while (j <= 100) {
 let k = 500;
 while (k <= 800) {
   if (k % 4 === 0) {
-    console.log(k);
+    //console.log(k);
   }
   k++;
+}
+
+//print all prime number between 0 and 20
+
+for (let i = 2; i <= 20; i++) {
+  let isPrime = true;
+  for (let j = 2; j < i; j++) {
+    if (i % j == 0) {
+      isPrime = false;
+      break;
+    }
+  }
+  if (isPrime) {
+    console.log(i);
+  }
 }

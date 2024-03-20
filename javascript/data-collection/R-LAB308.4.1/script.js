@@ -49,7 +49,7 @@ tableObjs.splice(1, 0, {
 
 //add at the end the object
 tableObjs.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
-console.log(tableObjs);
+//console.log(tableObjs);
 
 //average age calculation
 let sum = 0;
@@ -57,6 +57,40 @@ tableObjs.forEach((person) => {
   sum += Number(person.age);
 });
 let avg = sum / tableObjs.length;
-console.log(avg);
+//console.log(avg);
 
-//PART 5
+//PART 5  --two for loops solution
+/// go back to CSV format
+
+const row1 = Object.keys(tableObjs[0]);
+//console.log(row1);
+
+let convertToCSV = row1.join(",").concat(`\\n`);
+//console.log(row1);
+
+// tableObjs.forEach((person, index) => {
+//   for (let i = 0; i < row1.length; i++) {
+//     if (index === tableObjs.length - 1 && i === row1.length - 1) {
+//       convertToCSV = convertToCSV.concat(`${person[row1[i]]}`);
+//     } else if (i === row1.length - 1) {
+//       convertToCSV = convertToCSV.concat(`${person[row1[i]]}\\n`);
+//     } else {
+//       convertToCSV = convertToCSV.concat(`${person[row1[i]]},`);
+//     }
+//   }
+// });
+
+tableObjs.forEach((person, i) => {
+  let row = "";
+  for (let keys in person) {
+    row = row.concat(`${person[keys]},`);
+  }
+  row = row.slice(0, -1); //delete the last comma
+  if (i === tableObjs.length - 1) {
+    convertToCSV = convertToCSV.concat(row); //if last row do not add \n at the end
+  } else {
+    convertToCSV = convertToCSV.concat(row + `\\n`);
+  }
+});
+
+console.log(convertToCSV);

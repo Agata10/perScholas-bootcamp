@@ -1,23 +1,33 @@
-//feeling loopy
-const CSV =
+//PART 2
+const csv =
   "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26";
-let cell = "";
-let row = "";
 
-// const CSV =
-//   "Index,Mass (kg),Spring 1 (m),Spring 2 (m)\n1,0.00,0.050,0.050\n2,0.49,0.066,0.066\n3,0.98,0.087,0.080\n4,1.47,0.116,0.108\n5,1.96,0.142,0.138\n6,2.45,0.166,0.158\n7,2.94,0.193,0.174\n8,3.43,0.204,0.192\n9,3.92,0.226,0.205\n10,4.41,0.238,0.232";
+const table = [];
+let row = csv.split("\n");
 
-for (let i in CSV) {
-  if (CSV[i] !== "," && CSV[i] !== "\n") {
-    cell += CSV[i];
+row.forEach((r) => {
+  let rowData = r.split(",");
+  table.push(rowData);
+});
+
+//console.log(table);
+
+///PART 3
+const headings = table.shift(); //array of headings
+const tableObjs = []; //array of objects
+const keys = []; //
+//console.log(headings);
+
+headings.forEach((h) => {
+  //creating array of keys that are lowercase
+  keys.push(h.toLowerCase());
+});
+
+table.forEach((row) => {
+  const data = {}; ///object for data of each row
+  for (let i = 0; i < row.length; i++) {
+    data[keys[i]] = row[i]; //assign key to value
   }
-  if (CSV[i] == ",") {
-    row += cell + " ";
-    cell = "";
-  } else if (CSV[i] === "\n" || i == CSV.length - 1) {
-    row += cell;
-    console.log(row);
-    row = "";
-    cell = "";
-  }
-}
+  tableObjs.push(data);
+});
+//console.log(tableObjs);

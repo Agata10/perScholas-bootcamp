@@ -31,3 +31,32 @@ table.forEach((row) => {
   tableObjs.push(data);
 });
 //console.log(tableObjs);
+
+//PART 4
+
+//remove last element from the sorted array
+tableObjs.sort().pop();
+//console.group(tableObjs);
+
+//insert the following object at index 1
+tableObjs.splice(1, 0, {
+  id: "48",
+  name: "Barry",
+  occupation: "Runner",
+  age: "25",
+});
+//console.log(tableObjs);
+
+//add at the end the object
+tableObjs.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+console.log(tableObjs);
+
+//average age calculation
+let sum = 0;
+tableObjs.forEach((person) => {
+  sum += Number(person.age);
+});
+let avg = sum / tableObjs.length;
+console.log(avg);
+
+//PART 5

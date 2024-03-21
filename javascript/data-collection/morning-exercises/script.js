@@ -170,3 +170,22 @@ console.log(
     .level9[1].level10[1].level11.level12[1].level13.level14[2].level15
     .level16[0].level17.level18[0].level19[0].level20
 );
+
+// for (let key in hardObj) {
+//   for (let subkey in hardObj[key]) {
+//     for (let subsubkey in hardObj[key][subkey]) {
+//       //console.log(hardObj[key][subkey][subsubkey]);
+//       for (let subsubsubkey in hardObj[key][subkey][subsubkey]) {
+//         console.log(hardObj[key][subkey][subsubkey][subsubsubkey]);
+
+//         for (let subsubsubsubkey in hardObj[key][subkey][subsubkey][
+//           subsubsubkey
+//         ]) {
+//           console.log(
+//             hardObj[key][subkey][subsubkey][subsubsubkey][subsubsubsubkey]
+//           );
+//         }
+//       }
+//     }
+//   }
+}

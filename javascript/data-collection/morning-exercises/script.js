@@ -188,4 +188,21 @@ console.log(
 //       }
 //     }
 //   }
-}
+//}
+
+// function findValue(object, value) {
+//   for (let key in object) {
+//     if (object[key] === value) {
+//       console.log(value);
+//       return object[key];
+//     } else if (typeof object[key] === "object") {
+//       findValue(object, value);
+//     } else if (Array.isArray(object[key])) {
+//       object[key].forEach((element) => {
+//         findValue(element, value);
+//       });
+//     }
+//   }
+// }
+
+// findValue(hardObj, "You made it on hard object!");

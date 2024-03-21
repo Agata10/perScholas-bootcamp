@@ -165,11 +165,11 @@ const hardObj = {
 };
 
 //access you made it
-console.log(
-  hardObj.level1.level2[1].level3.level4[1].level5[0].level6.level7[2].level8[1]
-    .level9[1].level10[1].level11.level12[1].level13.level14[2].level15
-    .level16[0].level17.level18[0].level19[0].level20
-);
+// console.log(
+//   hardObj.level1.level2[1].level3.level4[1].level5[0].level6.level7[2].level8[1]
+//     .level9[1].level10[1].level11.level12[1].level13.level14[2].level15
+//     .level16[0].level17.level18[0].level19[0].level20
+// );
 
 // for (let key in hardObj) {
 //   for (let subkey in hardObj[key]) {
@@ -190,19 +190,23 @@ console.log(
 //   }
 //}
 
-// function findValue(object, value) {
-//   for (let key in object) {
-//     if (object[key] === value) {
-//       console.log(value);
-//       return object[key];
-//     } else if (typeof object[key] === "object") {
-//       findValue(object, value);
-//     } else if (Array.isArray(object[key])) {
-//       object[key].forEach((element) => {
-//         findValue(element, value);
-//       });
-//     }
-//   }
-// }
+function findValue(object, value) {
+  for (let key in object) {
+    if (object[key] === value) {
+      console.log(value);
+      return object[key];
+    } else if (typeof object[key] === "object") {
+      findValue(object[key], value);
+    } else if (Array.isArray(object[key])) {
+      object[key].forEach((element) => {
+        if (element === value) {
+          console.log(element);
+          return element;
+        }
+        findValue(element, value);
+      });
+    }
+  }
+}
 
-// findValue(hardObj, "You made it on hard object!");
+findValue(hardObj, "You made it on hard object!");

@@ -104,3 +104,64 @@ function sumAge(sum, obj) {
 console.log("Sum of all age: " + sumOfAge);
 //calc avg
 console.log(`Avarage age   ${Math.round(sumOfAge / changedArr.length)}`);
+
+//PART 3
+//our object
+const myObj = {
+  age: 25,
+};
+const objWithoutAge = {
+  name: "hejka",
+};
+
+//modify object function
+function changeAge(obj) {
+  if (!obj.hasOwnProperty("age")) {
+    obj.age = 0;
+  }
+  if (!obj.hasOwnProperty("updated_at")) {
+    let currentDate = new Date();
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    obj.updated_at = hours + ":" + minutes;
+  }
+  obj.age++;
+}
+
+changeAge(objWithoutAge);
+console.log("Object changed value: " + objWithoutAge.age);
+console.log("Object with time value: " + objWithoutAge.updated_at);
+
+//modify copy function
+function changeAgeOnCopy(obj) {
+  let copyOfObj = { ...obj };
+  if (!copyOfObj.hasOwnProperty("age")) {
+    copyOfObj.age = 0;
+  }
+  if (!copyOfObj.hasOwnProperty("updated_at")) {
+    let currentDate = new Date();
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    copyOfObj.updated_at = hours + ":" + minutes;
+  }
+  copyOfObj.age++;
+  return copyOfObj;
+}
+
+let copiedObj = changeAgeOnCopy(myObj);
+console.log("Copied object age: " + copiedObj.age);
+//console.log("Object changed value: " + myObj.age);
+
+function setTime(date) {
+  let newDate = new Date(date); ///we cant copy date object
+
+  let hours = newDate.getHours();
+  let minutes = newDate.getMinutes();
+  hours = 17;
+  minutes = 55;
+  //   console.log(
+  //     "Copy of date gives us: " + hours + "hours" + minutes + "minutes"
+  //   );
+}
+
+setTime(new Date()); ///doesnt change anything

@@ -4,6 +4,7 @@
 
 /* CSS Custom Properties */
 :root {
+    --white-color: white;
     --main-bg: #4a4e4d;
     --top-menu-bg: #0e9aa7;
     --sub-menu-bg: #3da4ab;

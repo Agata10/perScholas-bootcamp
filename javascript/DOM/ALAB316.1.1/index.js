@@ -25,3 +25,12 @@ menuLinks.forEach((m) => {
   link.textContent = m.text;
   topMenuEl.appendChild(link);
 });
+
+///SECOND PART
+//PART 3
+const subMenuEl = document.getElementById("sub-menu");
+subMenuEl.style.height = "100%";
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+subMenuEl.classList.add("flex-around");
+subMenuEl.style.position = "absolute";
+subMenuEl.style.top = "0";

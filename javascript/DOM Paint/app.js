@@ -1,8 +1,8 @@
-let canvas = document.querySelector('#canvas');
-let inpColor = document.querySelector('#inp-c');
-let button = document.querySelector('button');
+let canvas = document.querySelector("#canvas");
+let inpColor = document.querySelector("#inp-c");
+let button = document.querySelector("button");
 let canvasState = true;
-let color = '#FF0000';
+let color = "#FF0000";
 
 /* 
 
@@ -15,6 +15,7 @@ USE THEM!!!
 
 PART 1: Create the canvas!
 
+
 a. Make a function called createCanvas
 b. Inside, add a for loop that loops from 0 to 1080
 c. In the for loop, create a new div element
@@ -23,7 +24,12 @@ e. In the global scope, call the createCanvas function
 
 */
 
-// CODE HERE
+function createCanvas() {
+  for (let i = 0; i <= 1080; i++) {
+    const div = document.createElement("div");
+    canvas.appendChild(div);
+  }
+}
 
 /* 
 
@@ -37,7 +43,11 @@ e. If both checks pass, set the background color of the target element to the va
 
 */
 
-// CODE HERE
+canvas.addEventListener("mouseover", (e) => {
+  if (e.target !== canvas && canvasState === true) {
+    e.target.style.backgroundColor = color;
+  }
+});
 
 /*
 
@@ -48,7 +58,13 @@ b. In the callback function it should toggle the boolean value of the variable '
 
 */
 
-// CODE HERE
+canvas.addEventListener("click", () => {
+  if (!canvasState) {
+    canvasState = true;
+  } else {
+    canvasState = false;
+  }
+});
 
 /*
 
@@ -60,7 +76,9 @@ c. Inside the callback, set the 'color' variable to the current value of the tar
 
 */
 
-// CODE HERE
+inpColor.addEventListener("change", (e) => {
+  color = e.target.value;
+});
 
 /*
 
@@ -72,8 +90,12 @@ c. Then call the createCanvas function you created in Part 1
 
 */
 
-// CODE HERE
-
+button.addEventListener("click", () => {
+  while (canvas.firstChild) {
+    canvas.removeChild(canvas.firstChild);
+  }
+  createCanvas();
+});
 
 /*
 
@@ -85,3 +107,4 @@ c. Share it with the class! (Slack)
 
 */
 
+createCanvas();

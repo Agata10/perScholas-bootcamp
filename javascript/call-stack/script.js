@@ -49,3 +49,7 @@ const trampoline = (f, ...arg) => {
 };
 
 console.log(trampoline([1, [2, 3, [4, 5]]]));
+
+///Part 3
+const p = document.createElement("p");
+p.textContent = "Hello";

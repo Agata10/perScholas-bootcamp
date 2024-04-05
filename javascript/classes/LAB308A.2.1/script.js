@@ -75,6 +75,14 @@ class Adventurer extends Character {
     console.log(`${this.name} is scouting ahead...`);
     super.roll();
   }
+
+  duel(Adventurer) {
+    const adventurer = Adventurer.roll();
+    const opposite = this.roll();
+    if (opposite < adventurer) {
+      opposite--;
+    }
+  }
 }
 
 class Companion extends Character {
@@ -92,5 +100,29 @@ const companion1 = new Companion("Leo", "Cat");
 companion1.inventory = ["sword", "potion", "artifact"];
 const companion2 = new Companion("Frank", "Flea");
 companion2.inventory = ["small hat", "sunglasses"];
-console.log(Adventurer.ROLES);
-console.log(companion2);
+// console.log(Adventurer.ROLES);
+// console.log(companion2);
+
+// PART 5
+class AdventurerFactory {
+  constructor(role, power) {
+    this.role = role;
+    this.power = power;
+    this.adventurers = [];
+  }
+  generate(name) {
+    const newAdventurer = new Adventurer(name, this.role, this.power);
+    this.adventurers.push(newAdventurer);
+    return newAdventurer;
+  }
+  findByIndex(index) {
+    return this.adventurers[index];
+  }
+  findByName(name) {
+    return this.adventurers.find((a) => a.name === name);
+  }
+}
+
+const healers = new AdventurerFactory("Healer");
+const robin = healers.generate("Robin");
+console.log(robin);

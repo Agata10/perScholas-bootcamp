@@ -87,6 +87,7 @@ function introduce() {
   );
 }
 
+///EXERCIse 1
 class Human extends Animal {
   constructor(first, last, age, city, state, zip, occupation) {
     super(2, 2, false, false); //eyes, legs, isAwake, isMowing
@@ -117,4 +118,56 @@ const human1 = new Human(
   "software engineer"
 );
 
-console.log(human1.introduce());
+//console.log(human1.introduce());
+
+//ENCAPSULATION
+class Learner {
+  #grades = [];
+  #name = {
+    first: "",
+    last: "",
+  };
+  #age;
+
+  constructor(firstName, lastName, age) {
+    this.#name.first = firstName;
+    this.#name.last = lastName;
+    this.#age = age;
+  }
+  get name() {
+    return this.#name.first + " " + this.#name.last;
+  }
+  get age() {
+    return this.#age;
+  }
+  // set grades(grade) {
+  //   // change the grade to a Number, in case it was provided as a String
+  //   grade = Number(grade);
+  //   // Only accept values between 0 and 100
+  //   if (grade >= 0 && grade <= 100) {
+  //     this.#grades.push(grade);
+  //   }
+  // }
+  addGrades(...grades) {
+    grades = grades.flat();
+    grades.forEach((grade) => {
+      grade = Number(grade);
+
+      if (grade >= 0 && grade <= 100) {
+        this.#grades.push(grade);
+      }
+    });
+  }
+
+  get grades() {
+    return this.#grades;
+  }
+}
+
+const learner1 = new Learner("Leeroy", "Jenkins", 18);
+console.log(learner1.name);
+
+//we can use only assign for setting
+//learner1.grades = 2;
+learner1.addGrades(2, 3, 4);
+console.log(learner1.grades);

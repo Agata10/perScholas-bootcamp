@@ -13,3 +13,50 @@ randomly (research Math.random and Math.floor)
 6. When the station is changed, pick a song from that station. Example:
 console.log("Now Playing:" + song.title + "by" + song.artist)
 */
+
+let radio = {
+  stations: [
+    {
+      name: "pop",
+      songs: [
+        { title: "Perfect", artist: "Ed Sheeran" },
+        { title: "The Lazy Song", artist: "Bruno Mars" },
+        { title: "Beautiful Things", artist: "Benson Boone" },
+      ],
+    },
+    {
+      name: "classical",
+      songs: [
+        { title: "Symphony No.5", artist: "Beethoven" },
+        { title: "The four seasons", artist: "Vivaldi" },
+        { title: "The Blue Danube", artist: "Johann Strauss II" },
+      ],
+    },
+    {
+      name: "techno",
+      songs: [
+        { title: "Radiation", artist: "Majlo" },
+        { title: "Escape", artist: "Deadmau5" },
+        { title: "In my mind", artist: "Amelie Lens" },
+      ],
+    },
+  ],
+
+  randomStation: function () {
+    return this.stations[Math.floor(Math.random() * this.stations.length)];
+  },
+
+  pickARandomSong: function (randomStation) {
+    const randomSong =
+      randomStation.songs[
+        Math.floor(Math.random() * randomStation.songs.length)
+      ];
+
+    console.log(
+      "Now Playing: " + randomSong.title + " by " + randomSong.artist
+    );
+  },
+};
+
+console.log(radio.randomStation());
+radio.pickARandomSong(radio.randomStation());

@@ -6,6 +6,10 @@
     <title>Document</title>
   </head>
   <body>
+    <label>
+      Input:
+      <input type="text" id="myInput" />
+    </label>
     <button id="myBtn" type="button">Test it Out</button>
     <script>
       let request;
@@ -22,18 +26,30 @@
 
         request.onreadystatechange = alertResponse;
         //request.open("GET", "test.html");
-        request.open("GET", "test.xml");
-        request.send();
+        //XML request.open("GET", "test.xml");
+        request.open("POST", "https://jsonplaceholder.typicode.com/todos");
+
+        request.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        let inputVal = document.getElementById("myInput").value;
+        let encodedVal = encodeURIComponent(inputVal);
+        request.send(`data=${encodedVal}`);
+        //request.send();
       }
 
       function alertResponse() {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 200) {
+          if (request.status === 200 || request.status === 201) {
+            alert(request.responseText);
+            //   if (request.status === 200) {
             //alert(request.responseText);
-            const xml = request.responseXML;
-            const root = xml.querySelector("root");
-            let data = root.firstChild.data;
-            alert(data);
+            //XML
+            // const xml = request.responseXML;
+            // const root = xml.querySelector("root");
+            // let data = root.firstChild.data;
+            // alert(data);
           } else {
             alert(
               "The request returned a status other than 200 OK: " +

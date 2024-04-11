@@ -21,14 +21,19 @@
         }
 
         request.onreadystatechange = alertResponse;
-        request.open("GET", "test.html");
+        //request.open("GET", "test.html");
+        request.open("GET", "test.xml");
         request.send();
       }
 
       function alertResponse() {
         if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 200) {
-            alert(request.responseText);
+            //alert(request.responseText);
+            const xml = request.responseXML;
+            const root = xml.querySelector("root");
+            let data = root.firstChild.data;
+            alert(data);
           } else {
             alert(
               "The request returned a status other than 200 OK: " +

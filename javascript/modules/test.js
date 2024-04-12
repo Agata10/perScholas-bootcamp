@@ -1,5 +1,5 @@
-export const name = "bob";
+export const name = "Agata";
 
-export function sayHello() {
-  console.log("Hello" + name);
+export function sayHello(name) {
+  console.log("Hello " + name);
 }

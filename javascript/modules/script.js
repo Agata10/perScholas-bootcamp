@@ -1,3 +1,3 @@
 import { name, sayHello } from "./test.js";
 
-sayHello();
+sayHello(name);

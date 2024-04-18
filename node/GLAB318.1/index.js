@@ -4,9 +4,8 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-
+  //console.log(res);
   //res.end("Hello World!\n");
-
   switch (req.url) {
     case "/":
       res.setHeader("Content-type", "text/html");

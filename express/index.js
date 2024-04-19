@@ -34,9 +34,14 @@ app.get("/user/:userID/profile/:data", (req, res) => {
   );
 });
 
-app.post("/users", (req, res) => {
-  res.send("Recieved  POST request at /users");
-});
+app
+  .route("/users")
+  .get((req, res) => {
+    res.send("Recieved  GET request at /users");
+  })
+  .post((req, res) => {
+    res.send("Recieved  POST request at /users");
+  });
 
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}.`);

@@ -92,9 +92,14 @@ app.get("/", (req, res) => {
 //   console.log("got here");
 // });
 
-// app.get("/express", (req, res) => {
-//   res.send("Hello, got to route /express");
-// });
+app.get("/bob", (req, res) => {
+  //res.send("Hello, got to route /express");
+  //res.redirect('/')
+  res.json({
+    name: "Bob",
+    occupation: "Developer",
+  });
+});
 
 // //route parameters
 // // app.get("/users/:userID/profile/:data", (req, res) => {

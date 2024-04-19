@@ -12,9 +12,26 @@ app.get("/express", (req, res) => {
 });
 
 //route parameters
-app.get("/users/:userID/profile/:data", (req, res) => {
-  console.log(req.params);
-  res.send("Recieved  GET request at /users");
+// app.get("/users/:userID/profile/:data", (req, res) => {
+//   console.log(req.params);
+//   //res.send("Recieved  GET request at /users");
+//   res.send(
+//     `Hello, got to route /express/userId/profile/data with user ID: ${req.params.userID} and data: ${req.params.data}`
+//   );
+// });
+
+app.get("/user/:userID", (req, res) => {
+  res.send(`Navigated to the user page for: ${req.params.userID}.`);
+});
+
+app.get("/user/:userID/profile", (req, res) => {
+  res.send(`Navigated to the user profile page for: ${req.params.userID}.`);
+});
+
+app.get("/user/:userID/profile/:data", (req, res) => {
+  res.send(
+    `Navigated to the user profile page for: ${req.params.userID}, with the data: ${req.params.data}.`
+  );
 });
 
 app.post("/users", (req, res) => {

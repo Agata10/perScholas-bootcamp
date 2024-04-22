@@ -3,14 +3,26 @@ const router = express.Router();
 
 const posts = require('../data/posts');
 
-router.get('/api/posts/userId/:id', (req, res) => {
-  const post = posts.filter((p) => p.userId == req.params.id);
-  res.json(post);
-});
+// router.get('/api/posts/userId/:id', (req, res) => {
+//   const post = posts.filter((p) => p.userId == req.params.id);
+//   res.json(post);
+// });
 
 router
   .route('/api/posts')
   .get((req, res) => {
+    //all posts by a specific posts id
+    if (req.query.userId) {
+      const userID = req.query.userId;
+
+      // Check for userID validity.
+      if (!posts.find((p) => p.userId == userID)) {
+        res.status(401);
+        return res.json({ error: 'Invalid UserId' });
+      }
+      const allPost = posts.filter((p) => p.userId == userID);
+      res.json(allPost);
+    }
     res.json(posts);
   })
   .post((req, res) => {

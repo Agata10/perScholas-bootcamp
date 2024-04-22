@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3030;
 const postRoutes = require('./routes/postsRoutes');
 const userRoutes = require('./routes/userRoutes');
+const commentsRoutes = require('./routes/commentsRoutes');
 const error = require('./utilities/error');
 app.use(express.json());
 
@@ -52,7 +53,7 @@ app.use('/api', function (req, res, next) {
 
 app.use(postRoutes);
 app.use(userRoutes);
-
+app.use('/api/comments', commentsRoutes);
 app.get('/', (req, res) => {
   res.json({
     links: [

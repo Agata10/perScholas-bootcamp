@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const users = require('../data/users');
+const posts = require('../data/posts');
 
 router
   .route('/api/users')
@@ -66,4 +67,12 @@ router
     if (user) res.json(user);
     else next();
   });
+
+//all post with user of specific id
+router.get('/api/users/:id/posts', (req, res) => {
+  console.log(req.params);
+  const post = posts.filter((p) => p.userId == req.params.id);
+  res.json(post);
+});
+
 module.exports = router;

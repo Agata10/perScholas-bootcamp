@@ -3,6 +3,11 @@ const router = express.Router();
 
 const posts = require('../data/posts');
 
+router.get('/api/posts/userId/:id', (req, res) => {
+  const post = posts.filter((p) => p.userId == req.params.id);
+  res.json(post);
+});
+
 router
   .route('/api/posts')
   .get((req, res) => {

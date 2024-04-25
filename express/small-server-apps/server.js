@@ -60,9 +60,30 @@ app.get("/:number", (req, res) => {
   res.render("number", { number: req.params.number });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server working on the port: ${PORT}`);
-});
+// app.get("/", (req, res) => {
+//   res.send(`
+//       <h1>99 Bottles of beer on the wall</h1>
+//       <a href="/98">take one down, pass it around</a>
+//     `);
+// });
+
+// app.get("/:number_of_bottles", (req, res) => {
+//   const numberOfBottles = parseInt(req.params.number_of_bottles);
+
+//   if (numberOfBottles === 0) {
+//     res.send(`
+//         <h1>No more bottles of beer on the wall</h1>
+//         <a href="/">Start over</a>
+//       `);
+//   } else {
+//     res.send(`
+//         <h1>${numberOfBottles} Bottles of beer on the wall</h1>
+//         <a href="/${numberOfBottles - 1}">take one down, pass it around</a>
+//         <br/>
+//         <a href="/">Start over</a>
+//       `);
+//   }
+// });
 
 //Fibonacci
 app.get("/fibonacci/:n", (req, res) => {
@@ -71,6 +92,10 @@ app.get("/fibonacci/:n", (req, res) => {
   } else {
     res.send("I can tell this is not a fibonacci number.");
   }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server working on the port: ${PORT}`);
 });
 
 function isFibonacci(num, a = 0, b = 1) {

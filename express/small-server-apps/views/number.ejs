@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <% if(number == 0) {%>
+      <li><%=number%> Bottles of the beer on the wall</li>
+      <li><a href="/">Start Over</a></li>
+      <%} else {%>
+      <li><%=number%> Bottles of the beer on the wall</li>
+      <li><a href="/<%=number - 1%>">take one down, pass it around</a></li>
+      <%}%>
+    </ul>
+  </body>
+</html>

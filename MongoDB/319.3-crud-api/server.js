@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-import gradesRoutes from "./routes/grades.mjs";
+import gradesRoutes from "./routes/grades.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();

@@ -81,6 +81,10 @@ router.get("/student/:id", async (req, res) => {
 router.get("/learner/:id", async (req, res) => {
   let collection = await db.collection("grades");
   let query = { learner_id: Number(req.params.id) };
+
+  // Check for class_id parameter
+  if (req.query.class) query.class_id = Number(req.query.class);
+
   let result = await collection.find(query).toArray();
 
   if (!result) res.send("Not found").status(404);

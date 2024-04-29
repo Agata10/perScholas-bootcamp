@@ -9,57 +9,96 @@ const app = express();
 
 app.use(express.json());
 
-// The schema
-const learnerSchema = {
-  // Use the $jsonSchema operator
-  $jsonSchema: {
-    bsonType: 'object',
-    title: 'Learner Validation',
-    // List required fields
-    required: ['name', 'enrolled', 'year', 'campus'],
-    // Properties object contains document fields
-    properties: {
-      name: {
-        // Each document field is given validation criteria
-        bsonType: 'string',
-        // and a description that is shown when a document fails validation
-        description: "'name' is required, and must be a string",
-      },
-      enrolled: {
-        bsonType: 'bool',
-        description: "'enrolled' status is required and must be a boolean",
-      },
-      year: {
-        bsonType: 'int',
-        minimum: 1995,
-        description:
-          "'year' is required and must be an integer greater than 1995",
-      },
-      avg: {
-        bsonType: 'double',
-        description: "'avg' must be a double",
-      },
-      campus: {
-        enum: [
-          'Remote',
-          'Boston',
-          'New York',
-          'Denver',
-          'Los Angeles',
-          'Seattle',
-          'Dallas',
-        ],
-        description: 'Invalid campus location',
+const createValidationRule = async () => {
+  await db.command({
+    collMod: 'grades',
+    // Pass the validator object
+    validator: {
+      // Use the $jsonSchema operator
+      $jsonSchema: {
+        bsonType: 'object',
+        title: 'Grades Validation',
+        // List required fields
+        required: ['class_id', 'learner_id'],
+        // Properties object contains document fields
+        properties: {
+          class_id: {
+            bsonType: 'int',
+            minimum: 0,
+            maximum: 300,
+            description:
+              "'class_id' is required, and must be a int between 0 and 300,inclusive",
+          },
+          learner_id: {
+            bsonType: 'int',
+            minimum: 0,
+            description:
+              "'learner_id' is required, and must be a int greater or equial to 0",
+          },
+        },
       },
     },
-  },
+    validationAction: 'warn',
+  });
 };
 
 // Find invalid documents.
-app.route('/').get(async (req, res) => {
+app.get('/', async (req, res) => {
   let collection = db.collection('grades');
-  let result = await collection.find().limit(4).toArray();
-  res.send(result).status(200);
+
+  try {
+    // Create a single-field index for learner_id
+    await collection.createIndex({ learner_id: 1 });
+    console.log('Index created for learner_id');
+
+    // Create a single-field index for class_id
+    await collection.createIndex({ class_id: 1 });
+    console.log('Index created for class_id');
+
+    // Create a compound index on learner_id and class_id, in that order, both ascending
+    await collection.createIndex({ learner_id: 1, class_id: 1 });
+    console.log('Compound index created for learner_id and class_id');
+
+    res.send('Creating indexes').status(200);
+  } catch (err) {
+    console.error('Error creating index:', err);
+    res.status(500).json({ message: 'Error creating index' });
+  }
+});
+createValidationRule();
+// Test the schema validation by inserting an invalid document
+app.get('/grades', async (req, res) => {
+  let collection = await db.collection('grades');
+  let newDocument = {
+    learner_id: 2,
+    class_id: 200,
+  };
+
+  let result = await collection.insertOne(newDocument).catch((e) => {
+    return e.errInfo.details.schemaRulesNotSatisfied;
+  });
+  res.send(result).status(204);
+});
+
+app.get('/grades/stats', async (req, res) => {
+  let collection = await db.collection('grades');
+
+  let result = await collection
+    .aggregate([
+      {
+        $project: {
+          avg: {
+            $avg: '$scores.score',
+          },
+        },
+        $match: {
+          avg: { $gt: 70 },
+        },
+        $count: 'numberOfDoc',
+      },
+    ])
+    .toArray();
+  res.send(result);
 });
 
 // Global error handling

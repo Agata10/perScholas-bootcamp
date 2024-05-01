@@ -1,46 +1,42 @@
 import express from 'express';
-import db from '../db/conn.js';
 import { ObjectId } from 'mongodb';
 const router = express.Router();
+import Grades from '../models/gradeModel.js';
 
+// get all grades
 router.route('/').get(async (req, res) => {
-  let collection = await db.collection('grades');
-  let result = await collection.find().limit(4).toArray();
+  let result = await Grades.find({}).limit(20);
   if (!result) res.send('Not found').status(404);
   res.send(result).status(200);
 });
 
 //create a single grade document
 router.post('/', async (req, res) => {
-  let collection = await db.collection('grades');
-  let newDocument = req.body;
-  if (newDocument.student_id) {
-    newDocument.learner_id = newDocument.student_id;
-    delete newDocument.student_id;
+  try {
+    const grade = await Grades.create(req.body);
+    res.status(200).json(grade);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
-
-  let result = await collection.insertOne(newDocument);
-  res.send(result).status(204);
 });
 
-//////////////////////////////////////////
+// //////////////////////////////////////////
 
 //get a single grade by id
 router.get('/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { _id: new ObjectId(req.params.id) };
-  let result = await collection.findOne(query);
-
-  if (!result) res.send('Not found').status(404);
-  res.send(result).status(200);
+  const id = req.params.id;
+  try {
+    let result = await Grades.findById(id);
+    res.send(result).status(200);
+  } catch (err) {
+    res.send('Invalid Id').status(404);
+  }
 });
 
 // Add a score to a grade entry
 router.patch('/:id/add', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { _id: new ObjectId(req.params.id) };
-
-  let result = await collection.updateOne(query, {
+  const id = req.params.id;
+  let result = await Grades.findByIdAndUpdate(id, {
     $push: { scores: req.body },
   });
 
@@ -50,92 +46,93 @@ router.patch('/:id/add', async (req, res) => {
 
 // Remove a score from a grade entry
 router.patch('/:id/remove', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { _id: new ObjectId(req.params.id) };
-
-  let result = await collection.updateOne(query, {
-    $pull: { scores: req.body },
-  });
-
-  if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
+  const id = req.params.id;
+  try {
+    let result = await Grades.findByIdAndUpdate(id, {
+      $pull: { scores: req.body },
+    });
+    res.send(result).status(200);
+  } catch (err) {
+    res.send('Id not found').status(404);
+  }
 });
 
 // Delete a single grade entry
 router.delete('/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { _id: new ObjectId(req.params.id) };
-  let result = await collection.deleteOne(query);
-
-  if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
+  const id = req.params.id;
+  try {
+    let result = await Grades.findByIdAndDelete(id);
+    res.send(result).status(200);
+  } catch (err) {
+    res.send('Id not found').status(404);
+  }
 });
 
-////////////////////////////
+// ////////////////////////////
 
-// Student route for backwards compatibility
-router.get('/student/:id', async (req, res) => {
-  res.redirect(`../learner/${req.params.id}`);
-});
+// // Student route for backwards compatibility
+// router.get('/student/:id', async (req, res) => {
+//   res.redirect(`../learner/${req.params.id}`);
+// });
 
-// Get a single student grade data
-router.get('/learner/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { learner_id: Number(req.params.id) };
+// // Get a single student grade data
+// router.get('/learner/:id', async (req, res) => {
+//   let collection = await db.collection('grades');
+//   let query = { learner_id: Number(req.params.id) };
 
-  // Check for class_id parameter
-  if (req.query.class) query.class_id = Number(req.query.class);
+//   // Check for class_id parameter
+//   if (req.query.class) query.class_id = Number(req.query.class);
 
-  let result = await collection.find(query).toArray();
+//   let result = await collection.find(query).toArray();
 
-  if (!result) res.send('Not found').status(404);
-  res.send(result).status(200);
-});
+//   if (!result) res.send('Not found').status(404);
+//   res.send(result).status(200);
+// });
 
-// Delete a learner's grade data
-router.delete('/learner/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { learner_id: Number(req.params.id) };
+// // Delete a learner's grade data
+// router.delete('/learner/:id', async (req, res) => {
+//   let collection = await db.collection('grades');
+//   let query = { learner_id: Number(req.params.id) };
 
-  let result = await collection.deleteOne(query);
+//   let result = await collection.deleteOne(query);
 
-  if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
-});
+//   if (!result) res.send('Not found').status(404);
+//   else res.send(result).status(200);
+// });
 
-////////////////////////////////////
+// ////////////////////////////////////
 
-// Get a single class grade data
-router.get('/class/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { class_id: Number(req.params.id) };
-  let result = await collection.find(query).toArray();
+// // Get a single class grade data
+// router.get('/class/:id', async (req, res) => {
+//   let collection = await db.collection('grades');
+//   let query = { class_id: Number(req.params.id) };
+//   let result = await collection.find(query).toArray();
 
-  if (!result) res.send('Not found').status(404);
-  res.send(result).status(200);
-});
+//   if (!result) res.send('Not found').status(404);
+//   res.send(result).status(200);
+// });
 
-// Update a class id
-router.patch('/class/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { class_id: Number(req.params.id) };
+// // Update a class id
+// router.patch('/class/:id', async (req, res) => {
+//   let collection = await db.collection('grades');
+//   let query = { class_id: Number(req.params.id) };
 
-  let result = await collection.updateMany(query, {
-    $set: { class_id: req.body.class_id },
-  });
+//   let result = await collection.updateMany(query, {
+//     $set: { class_id: req.body.class_id },
+//   });
 
-  if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
-});
+//   if (!result) res.send('Not found').status(404);
+//   else res.send(result).status(200);
+// });
 
-// Delete a class
-router.delete('/class/:id', async (req, res) => {
-  let collection = await db.collection('grades');
-  let query = { class_id: Number(req.params.id) };
+// // Delete a class
+// router.delete('/class/:id', async (req, res) => {
+//   let collection = await db.collection('grades');
+//   let query = { class_id: Number(req.params.id) };
 
-  let result = await collection.deleteMany(query);
+//   let result = await collection.deleteMany(query);
 
-  if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
-});
+//   if (!result) res.send('Not found').status(404);
+//   else res.send(result).status(200);
+// });
 export default router;

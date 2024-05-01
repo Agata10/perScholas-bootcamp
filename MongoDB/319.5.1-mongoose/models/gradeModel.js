@@ -1,5 +1,16 @@
 import mongoose from 'mongoose';
 
+const scoreSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    enum: ['exam', 'quiz', 'homework', 'test'],
+  },
+  score: {
+    type: Number,
+  },
+  _id: false,
+});
+
 const gradeSchema = new mongoose.Schema({
   learner_id: {
     type: Number,
@@ -9,15 +20,7 @@ const gradeSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  scores: [
-    {
-      type: {
-        type: String,
-        enum: ['exam', 'quiz', 'homework', 'test'],
-      },
-      score: Number,
-    },
-  ],
+  scores: [scoreSchema],
 });
 
 export default mongoose.model('grades', gradeSchema);

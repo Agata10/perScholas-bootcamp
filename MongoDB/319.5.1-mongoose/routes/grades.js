@@ -36,21 +36,29 @@ router.get('/:id', async (req, res) => {
 // Add a score to a grade entry
 router.patch('/:id/add', async (req, res) => {
   const id = req.params.id;
-  let result = await Grades.findByIdAndUpdate(id, {
-    $push: { scores: req.body },
-  });
-
+  let result = await Grades.findByIdAndUpdate(
+    id,
+    {
+      $push: { scores: req.body },
+    },
+    { new: true }
+  );
+  console.log(result);
   if (!result) res.send('Not found').status(404);
-  else res.send(result).status(200);
+  else res.json(result).status(200);
 });
 
 // Remove a score from a grade entry
 router.patch('/:id/remove', async (req, res) => {
   const id = req.params.id;
   try {
-    let result = await Grades.findByIdAndUpdate(id, {
-      $pull: { scores: req.body },
-    });
+    let result = await Grades.findByIdAndUpdate(
+      id,
+      {
+        $pull: { scores: req.body },
+      },
+      { new: true }
+    );
     res.send(result).status(200);
   } catch (err) {
     res.send('Id not found').status(404);
@@ -70,69 +78,63 @@ router.delete('/:id', async (req, res) => {
 
 // ////////////////////////////
 
-// // Student route for backwards compatibility
-// router.get('/student/:id', async (req, res) => {
-//   res.redirect(`../learner/${req.params.id}`);
-// });
+// Student route for backwards compatibility
+router.get('/student/:id', async (req, res) => {
+  res.redirect(`../learner/${req.params.id}`);
+});
 
-// // Get a single student grade data
-// router.get('/learner/:id', async (req, res) => {
-//   let collection = await db.collection('grades');
-//   let query = { learner_id: Number(req.params.id) };
+// Get a single student grade data
+router.get('/learner/:id', async (req, res) => {
+  let query = { learner_id: Number(req.params.id) };
 
-//   // Check for class_id parameter
-//   if (req.query.class) query.class_id = Number(req.query.class);
+  // Check for class_id parameter
+  if (req.query.class) query.class_id = Number(req.query.class);
 
-//   let result = await collection.find(query).toArray();
+  let result = await Grades.find(query);
 
-//   if (!result) res.send('Not found').status(404);
-//   res.send(result).status(200);
-// });
+  if (!result) res.send('Not found').status(404);
+  res.send(result).status(200);
+});
 
-// // Delete a learner's grade data
-// router.delete('/learner/:id', async (req, res) => {
-//   let collection = await db.collection('grades');
-//   let query = { learner_id: Number(req.params.id) };
+// Delete a learner's grade data
+router.delete('/learner/:id', async (req, res) => {
+  let query = { learner_id: Number(req.params.id) };
 
-//   let result = await collection.deleteOne(query);
+  let result = await Grades.deleteMany(query);
 
-//   if (!result) res.send('Not found').status(404);
-//   else res.send(result).status(200);
-// });
+  if (!result) res.send('Not found').status(404);
+  else res.send(result).status(200);
+});
 
 // ////////////////////////////////////
 
-// // Get a single class grade data
-// router.get('/class/:id', async (req, res) => {
-//   let collection = await db.collection('grades');
-//   let query = { class_id: Number(req.params.id) };
-//   let result = await collection.find(query).toArray();
+// Get a single class grade data
+router.get('/class/:id', async (req, res) => {
+  let query = { class_id: req.params.id };
+  let result = await Grades.find(query);
+  if (!result) res.send('Not found').status(404);
+  res.send(result).status(200);
+});
 
-//   if (!result) res.send('Not found').status(404);
-//   res.send(result).status(200);
-// });
+// Update a class id
+router.patch('/class/:id', async (req, res) => {
+  let query = { class_id: req.params.id };
 
-// // Update a class id
-// router.patch('/class/:id', async (req, res) => {
-//   let collection = await db.collection('grades');
-//   let query = { class_id: Number(req.params.id) };
+  let result = await Grades.updateMany(query, {
+    $set: { class_id: req.body.class_id },
+  });
 
-//   let result = await collection.updateMany(query, {
-//     $set: { class_id: req.body.class_id },
-//   });
+  if (!result) res.send('Not found').status(404);
+  else res.send(result).status(200);
+});
 
-//   if (!result) res.send('Not found').status(404);
-//   else res.send(result).status(200);
-// });
+// Delete a class
+router.delete('/class/:id', async (req, res) => {
+  let query = { class_id: Number(req.params.id) };
 
-// // Delete a class
-// router.delete('/class/:id', async (req, res) => {
-//   let collection = await db.collection('grades');
-//   let query = { class_id: Number(req.params.id) };
+  let result = await Grades.deleteMany(query);
 
-//   let result = await collection.deleteMany(query);
-
-//   if (!result) res.send('Not found').status(404);
-//   else res.send(result).status(200);
-// });
+  if (!result) res.send('Not found').status(404);
+  else res.send(result).status(200);
+});
 export default router;

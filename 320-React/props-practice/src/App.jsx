@@ -28,8 +28,30 @@ function App() {
     alt: 'React logo',
     href: 'https://react.dev',
   };
+
+  let arr = [1, 2, 3, 4, 5];
+
+  arr.map((num) => num * 2);
+  // An array of dogs.
+  const dogs = [
+    { name: 'Sparky', age: 5 },
+    { name: 'Spot', age: 5 },
+    { name: 'Ralph', age: 5 },
+    { name: 'Fido', age: 5 },
+  ];
+
+  // console.log(Object.keys(dogs));
+  // console.log(Object.values(dogs));
+  const dogElements = dogs.map((dog) => {
+    return (
+      <div key={dog.name}>
+        {dog.name}: {dog.age}
+      </div>
+    );
+  });
   return (
     <>
+      {dogElements}
       <Container>
         <Image src={viteLogo} alt="Vite logo" href="https://vitejs.dev" />
         {/**spread the object into key value pairs */}

@@ -4,12 +4,20 @@ import './App.css';
 import Welcome from './components/Welcome';
 import Image from './components/Image';
 
+//props drilling
+const Parent = (props) => <Child cheese="gouda" />;
+
+const Child = (props) => <GrandChild data={props.cheese} />;
+
+const GrandChild = (props) => <h1>{props.data}</h1>;
+
 function App() {
   return (
     <>
       <div>
         <Image src={viteLogo} alt="Vite logo" href="https://vitejs.dev" />
         <Image src={reactLogo} alt="React logo" href="https://react.dev" />
+        <Parent />
       </div>
       <h1>Vite + React</h1>
       <Welcome firstName="Agata" lastName="Det." style={{ color: 'green' }} />

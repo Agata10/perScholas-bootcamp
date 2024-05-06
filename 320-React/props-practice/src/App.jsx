@@ -11,6 +11,16 @@ const Child = (props) => <GrandChild data={props.cheese} />;
 
 const GrandChild = (props) => <h1>{props.data}</h1>;
 
+//props.children
+const Container = (props) => {
+  return (
+    <div>
+      <h1>This is hello from container</h1>
+      {props.children}
+    </div>
+  );
+};
+
 function App() {
   //the props object
   const reactImgProps = {
@@ -20,12 +30,14 @@ function App() {
   };
   return (
     <>
-      <div>
+      <Container>
         <Image src={viteLogo} alt="Vite logo" href="https://vitejs.dev" />
         {/**spread the object into key value pairs */}
         <Image {...reactImgProps} />
-        <Parent />
-      </div>
+      </Container>
+
+      <Parent />
+
       <h1>Vite + React</h1>
       <Welcome firstName="Agata" lastName="Det." style={{ color: 'green' }} />
       <Welcome

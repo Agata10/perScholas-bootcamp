@@ -1,7 +1,9 @@
-export default function Image(props) {
+export default function Image({ href, src, alt }) {
+  //or if passed (props)
+  //let href= props.href etc
   return (
-    <a href={props.href} target="_blank">
-      <img src={props.src} alt={props.alt} className="logo" />
+    <a href={href} target="_blank">
+      <img src={src} alt={alt} className="logo" />
     </a>
   );
 }

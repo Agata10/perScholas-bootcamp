@@ -2,7 +2,9 @@ export default function Welcome(props) {
   //console.log(props);
   return (
     <>
-      <h1>Hello, {props.name}</h1>
+      <h1 style={props.style}>
+        Hello, {props.firstName} {props.lastName}
+      </h1>
     </>
   );
 }

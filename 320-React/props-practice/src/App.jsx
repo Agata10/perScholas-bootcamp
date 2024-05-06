@@ -2,20 +2,22 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Welcome from './components/Welcome';
+import Image from './components/Image';
 
 function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Image src={viteLogo} alt="Vite logo" href="https://vitejs.dev" />
+        <Image src={reactLogo} alt="React logo" href="https://react.dev" />
       </div>
       <h1>Vite + React</h1>
-      <Welcome name="Agata" />
+      <Welcome firstName="Agata" lastName="Det." style={{ color: 'green' }} />
+      <Welcome
+        firstName="NoName"
+        lastName="NoLastName"
+        style={{ color: 'red' }}
+      />
       <div className="card">
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR

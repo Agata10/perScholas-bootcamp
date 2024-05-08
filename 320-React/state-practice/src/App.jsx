@@ -11,6 +11,7 @@ function App() {
   const handleClick = () => {
     setCount(count + 1);
   };
+  console.log('render');
   return (
     <>
       Hello (from React)

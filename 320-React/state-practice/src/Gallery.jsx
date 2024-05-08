@@ -8,7 +8,10 @@ export default function Gallery() {
     if (index === sculptureList.length - 1) {
       setIndex(0);
     } else {
-      setIndex(index + 1);
+      setIndex((index) => index + 1);
+      //   setIndex((index) => index + 1);
+      //   setIndex((index) => index + 1);
+      //will work
     }
   }
 

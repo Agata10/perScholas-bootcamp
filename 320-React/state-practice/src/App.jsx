@@ -21,7 +21,10 @@ function App() {
   const changeStatus = () => {
     // const userCopy = { ...user };
     // userCopy.status = 'visible';
-    setUser({ ...user, status: 'visible' });
+    setUser({
+      ...user,
+      status: user.status === 'visible' ? 'hidden' : 'visible',
+    });
   };
   return (
     <>

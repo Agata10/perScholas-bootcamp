@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-
+import Gallery from './Gallery';
 function App() {
   //array destructing
   const [count, setCount] = useState(0); /// returns => [state, setState]
@@ -17,6 +17,8 @@ function App() {
       Hello (from React)
       <h1>{count}</h1>
       <button onClick={handleClick}>Add</button>
+      <p>-------------------------------</p>
+      <Gallery />
     </>
   );
 }

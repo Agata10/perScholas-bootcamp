@@ -1,12 +1,17 @@
 import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
 
-const ProductTable = () => {
+const ProductTable = ({ products }) => {
   return (
-    <div>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Price</th>
+      </thead>
+      <tbody></tbody>
       <ProductCategoryRow />
       <ProductRow />
-    </div>
+    </table>
   );
 };
 

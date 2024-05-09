@@ -6,10 +6,15 @@ const ProductTable = ({ products }) => {
   let lastCategory = null;
   products.forEach((product) => {
     if (product.category !== lastCategory) {
-      rows.push(<ProductCategoryRow category={product.category} />);
+      rows.push(
+        <ProductCategoryRow
+          category={product.category}
+          key={product.category}
+        />
+      );
     }
 
-    rows.push(<ProductRow product={product.name} price={product.price} />);
+    rows.push(<ProductRow key={product.name} product={product} />);
     lastCategory = product.category;
   });
   return (
@@ -21,7 +26,6 @@ const ProductTable = ({ products }) => {
         </tr>
       </thead>
       <tbody>{rows}</tbody>
-      <ProductRow />
     </table>
   );
 };

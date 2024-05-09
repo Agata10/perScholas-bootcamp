@@ -1,8 +1,8 @@
-const ProductRow = ({ product, price }) => {
+const ProductRow = ({ product }) => {
   return (
     <tr>
-      <td>{product}</td>
-      <td>{price}</td>
+      <td>{product.name}</td>
+      <td>{product.price}</td>
     </tr>
   );
 };

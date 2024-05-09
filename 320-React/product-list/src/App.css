@@ -58,11 +58,19 @@ label {
 
 th {
   padding-top: 10px;
+  text-align: center;
+}
+
+td:first-child {
+  padding-right: 40px;
 }
 
 td {
   padding: 2px;
-  padding-right: 40px;
+}
+
+th {
+  text-align: center;
 }
 
 

@@ -26,6 +26,27 @@ function App() {
       status: user.status === 'visible' ? 'hidden' : 'visible',
     });
   };
+
+  const [person, setPerson] = useState({
+    firstName: "S'Chn T'Gai",
+    lastName: 'Spock',
+    email: 'spock@ussenterprise.space',
+    address: {
+      city: 'USS Enterprise',
+      state: 'Where No Man Has Gone Before',
+      zip: '9083147',
+    },
+  });
+
+  const changeZip = () => {
+    setPerson({
+      ...person,
+      address: {
+        ...person.address,
+        zip: '9083177',
+      },
+    });
+  };
   return (
     <>
       Hello (from React)
@@ -33,6 +54,9 @@ function App() {
       <button onClick={handleClick}>Add</button>
       <h3>{user.status}</h3>
       <button onClick={changeStatus}>Change Status</button>
+      <p>-------------------------------</p>
+      <h3>{person.address.zip}</h3>
+      <button onClick={changeZip}>Change zip</button>
       <p>-------------------------------</p>
       <Gallery />
     </>

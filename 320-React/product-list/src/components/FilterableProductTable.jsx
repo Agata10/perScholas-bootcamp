@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 
 const FilterableProductTable = ({ products }) => {
   const [filterText, setfilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState('false');
+  const [inStockOnly, setInStockOnly] = useState(false);
   return (
     <div>
       <SearchBar filterText={filterText} inStockOnly={inStockOnly} />

@@ -1,10 +1,10 @@
 import './App.css';
 import FilterableProductTable from './components/FilterableProductTable';
-import products from './data';
+import PRODUCTS from './data';
 function App() {
   return (
     <>
-      <FilterableProductTable products={products} />
+      <FilterableProductTable products={PRODUCTS} />
     </>
   );
 }

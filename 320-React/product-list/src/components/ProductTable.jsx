@@ -1,5 +1,13 @@
+import ProductCategoryRow from './ProductCategoryRow';
+import ProductRow from './ProductRow';
+
 const ProductTable = () => {
-  return <div>ProductTable</div>;
+  return (
+    <div>
+      <ProductCategoryRow />
+      <ProductRow />
+    </div>
+  );
 };
 
 export default ProductTable;

@@ -2,13 +2,16 @@ import ProductCategoryRow from './ProductCategoryRow';
 import ProductRow from './ProductRow';
 
 const ProductTable = ({ products }) => {
+  const rows = [];
   return (
     <table>
       <thead>
-        <th>Name</th>
-        <th>Price</th>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>{rows}</tbody>
       <ProductCategoryRow />
       <ProductRow />
     </table>

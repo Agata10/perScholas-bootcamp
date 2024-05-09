@@ -1,5 +1,5 @@
 const ProductCategoryRow = () => {
-  return <div>ProductCategoryRow</div>;
+  return <tr>ProductCategoryRow</tr>;
 };
 
 export default ProductCategoryRow;

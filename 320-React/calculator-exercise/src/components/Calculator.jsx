@@ -1,67 +1,46 @@
 import { useState } from 'react';
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState('');
-  const [firstOper, setFirstOper] = useState(0);
-  const [secOper, setSecOper] = useState(0);
-  const [operator, setOperator] = useState('');
+
   const buttons = [
+    ['BACK <-', 'RESET'],
     [7, 8, 9, '/'],
-    [4, 5, 6, 'x'],
+    [4, 5, 6, '*'],
     [1, 2, 3, '-'],
-    [0, 'C', '+', '='],
+    [0, '.', '+', '='],
   ];
 
-  function calculate() {
-    switch (operator) {
-      case '/':
-        if (secOper == 0) {
-          return "Can't divide by 0";
-        }
-        return Number(firstOper) / Number(secOper);
-      case 'x':
-        return Number(firstOper) * Number(secOper);
-      case '-':
-        return Number(firstOper) - Number(secOper);
-      case '+':
-        return Number(firstOper) + Number(secOper);
-    }
-  }
-
   const handleClick = (e) => {
-    setDisplayValue((prev) => prev + e.target.value);
-    if (firstOper === 0) {
-      setFirstOper(e.target.value);
-    } else {
-      setSecOper(e.target.value);
-    }
     switch (e.target.value) {
-      case '.':
-        setFirstOper((prev) => prev + e.target.value);
-        break;
-      case '/':
-        setOperator('/');
-        break;
-      case 'x':
-        setOperator('x');
-        break;
-      case '-':
-        setOperator('-');
-        break;
-      case '+':
-        setOperator('+');
-        break;
       case '=':
-        setDisplayValue(calculate().toString());
-        setFirstOper(calculate().toString());
-        setOperator('');
-        setSecOper(0);
-        break;
-      case 'C':
+        try {
+          console.log(displayValue);
+          if (
+            displayValue.toString().split('/').length - 1 > 1 ||
+            displayValue.toString().split('+').length - 1 > 1 ||
+            displayValue.toString().split('-').length - 1 > 1
+          ) {
+            throw new Error("Can't have many operators");
+          }
+          if (displayValue.toString().split('/').length - 1 === 1) {
+            console.log(displayValue.slice(0, -1));
+            if (displayValue.slice(-1) === '0') {
+              throw new Error("Can't divde by 0");
+            }
+          }
+          setDisplayValue(eval(displayValue).toString());
+        } catch (err) {
+          setDisplayValue(err.message);
+        }
+        return;
+      case 'RESET':
         setDisplayValue('');
-        setFirstOper(0);
-        setSecOper(0);
-        setOperator('');
+        return;
+      case 'BACK <-':
+        setDisplayValue((prev) => prev.slice(0, -1));
+        return;
     }
+    setDisplayValue((prev) => prev + e.target.value);
   };
   return (
     <div className="calculator-wrapper">

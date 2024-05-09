@@ -17,7 +17,7 @@ const SearchBar = ({
           type="checkbox"
           id="stock"
           checked={inStockOnly}
-          onChange={(e) => setInStockOnly(e.target.value)}
+          onChange={(e) => setInStockOnly(e.target.checked)}
         />
         Only show products in stocks
       </label>

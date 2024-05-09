@@ -8,6 +8,8 @@ const ProductTable = ({ products }) => {
     if (product.category !== lastCategory) {
       rows.push(<ProductCategoryRow category={product.category} />);
     }
+
+    rows.push(<ProductRow product={product.name} price={product.price} />);
     lastCategory = product.category;
   });
   return (

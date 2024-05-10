@@ -3,6 +3,7 @@ import Counter from './components/Counter';
 
 import './App.css';
 import StopWatch from './components/StopWatch';
+import CatFriends from './components/CatFriends';
 
 function App() {
   const ref = useRef(0);
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       {/* <Counter /> */}
-      <StopWatch />
+      {/* <StopWatch /> */}
+      <CatFriends />
     </>
   );
 }

@@ -9,6 +9,7 @@ const Counter = () => {
     alert('You clicked ' + ref.current + ' times!');
   }
   console.log('rendered Counter', counter);
+  console.log('ref value is', ref.current);
   return <button onClick={handleClick}>Click me!</button>;
 };
 

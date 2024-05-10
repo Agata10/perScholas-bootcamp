@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Counter from './components/Counter';
 
 import './App.css';
+import StopWatch from './components/StopWatch';
 
 function App() {
   const ref = useRef(0);
@@ -9,7 +10,8 @@ function App() {
   console.log('rendered app');
   return (
     <>
-      <Counter />
+      {/* <Counter /> */}
+      <StopWatch />
     </>
   );
 }

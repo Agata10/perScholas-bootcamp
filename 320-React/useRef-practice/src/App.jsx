@@ -11,7 +11,7 @@ function App() {
   const [show,setShow] = useState(false)
   ref.current = 'test';
   console.log('rendered app');
-
+useEffect(()=> {console.log("App mounted", show)},[show])
   return (
     <>
     <button onClick={() => setShow(!show)}>{show ? "hide the form" : "show form"}</button>

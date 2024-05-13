@@ -13,7 +13,7 @@ export default function App() {
   //catch movies
   const getMovie = async (searchTerm) => {
     const response = await fetch(
-      `http://www.omdbapi.com/?${apikey}=YOURKEY&t=${searchTerm}`
+      `http://www.omdbapi.com/?apikey=${apikey}&t=${searchTerm}`
     );
     //parse json response into js object
     const data = await response.json();

@@ -11,24 +11,33 @@ const Profile = () => {
     if (!id) return;
     const getUserData = async () => {
       try {
-        const result = await fetch(`https://swapi.dev/api/people/${id}`);
+        const result = await fetch(`https://exapmle-api.com/${id}`);
         const data = await result.json();
-        setUser(data.name);
+        setUser(data);
       } catch (err) {
         console.log(err);
         setUser('No user to catch..');
       }
     };
 
-    getUserData();
+    setTimeout(getUserData, 1000);
   }, [id]);
   const loaded = () => {
-    return <div>{user}</div>;
+    if (typeof user === 'string') {
+      return <div>{user}</div>;
+    } else {
+      return (
+        <div>
+          <h1>{user.name}</h1>
+          <h2>{user.age}</h2>
+        </div>
+      );
+    }
   };
   const loading = () => {
     return <div>Loading....</div>;
   };
-  return <div>{user ? loaded() : loading()}</div>;
+  return user ? loaded() : loading();
 };
 
 export default Profile;

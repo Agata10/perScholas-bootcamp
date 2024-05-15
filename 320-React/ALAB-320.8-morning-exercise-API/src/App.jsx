@@ -1,11 +1,14 @@
 import getAllStarships from './services/sw-api';
 import './App.css';
-import { useEffect } from 'react';
+import Card from './components/Card';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [stars, setStars] = useState(null);
   const fetchStarships = async () => {
     try {
       const starships = await getAllStarships();
+      setStars(starships.results);
       console.log(starships);
     } catch (error) {
       console.error(error);
@@ -15,7 +18,21 @@ function App() {
     fetchStarships();
   }, []);
 
-  return <></>;
+  const style = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '100%',
+    gap: '20px',
+  };
+  return (
+    <div className="App">
+      <h1>STAR WARS STARSHIPS</h1>
+      <div style={style}>
+        {!stars && <div>Loading data...</div>}
+        {stars && stars.map((s) => <Card key={s.name} star={s} />)}
+      </div>
+    </div>
+  );
 }
 
 export default App;

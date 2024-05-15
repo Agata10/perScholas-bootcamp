@@ -5,7 +5,7 @@ const Nav = () => {
       <Link to="/">
         <div>CRYPTO PRICES</div>
       </Link>
-      <Link exact to="/currencies">
+      <Link to="/currencies">
         <div>CURRENCIES</div>
       </Link>
     </div>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Main from './components/Main';
-import Profile from './components/Profile';
+import Main from './pages/Main';
+import Profile from './pages/Profile';
 
 function App() {
   return (

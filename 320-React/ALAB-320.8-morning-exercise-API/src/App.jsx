@@ -9,7 +9,7 @@ function App() {
     try {
       const starships = await getAllStarships();
       setStars(starships.results);
-      console.log(starships);
+      // console.log(starships);
     } catch (error) {
       console.error(error);
     }

@@ -17,6 +17,7 @@ const Price = () => {
       console.error(err);
     }
   };
+
   useEffect(() => {
     getCoin();
   }, []);

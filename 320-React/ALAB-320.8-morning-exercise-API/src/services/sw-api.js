@@ -5,6 +5,7 @@ const getAllStarships = async () => {
       throw new Error('No data fetched');
     }
     const starships = await result.json();
+    console.log(starships);
     return starships;
   } catch (err) {
     console.error(err.message);

@@ -29,7 +29,7 @@ function App() {
       <h1>STAR WARS STARSHIPS</h1>
       <div style={style}>
         {!stars && <div>Loading data...</div>}
-        {stars && stars.map((s) => <Card key={s.name} star={s} />)}
+        {stars && stars.map((s, index) => <Card key={index} star={s} />)}
       </div>
     </div>
   );

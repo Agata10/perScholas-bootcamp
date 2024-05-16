@@ -1,5 +1,8 @@
 //state is the current state(before the changes)
 //action is the infromation from dispatch
+
+// const INC = 'inc'; //-> you can define types like that too
+// const DEC = 'dec'
 function reducer(state, action) {
   switch (action.type) {
     case 'inc':

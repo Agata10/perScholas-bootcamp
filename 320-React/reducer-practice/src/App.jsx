@@ -6,15 +6,16 @@ function App() {
   //state is the current state(before the changes)
   //action is the infromation from dispatch
   function reducer(state, action) {
-    if (action === 'inc') {
-      state++;
-    } else if (action === 'dec') {
-      state--;
-    } else {
-      state = 0;
+    switch (action.type) {
+      case 'inc':
+        return ++state;
+      case 'dec':
+        return state - 1;
+      case 'reset':
+        return 0;
+      default:
+        return state;
     }
-
-    return state;
   }
   //dispatch -> gets info from dispatch and returns new state
   const [count, dispatch] = useReducer(reducer, 0);
@@ -22,9 +23,9 @@ function App() {
   return (
     <>
       <div>Counter: {count}</div>
-      <button onClick={() => dispatch('inc')}>Increment</button>
-      <button onClick={() => dispatch('dec')}>Decrement</button>
-      <button onClick={() => dispatch('reset')}>Reset</button>
+      <button onClick={() => dispatch({ type: 'inc' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'dec' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
     </>
   );
 }

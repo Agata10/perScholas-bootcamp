@@ -17,11 +17,11 @@ function App() {
     return state;
   }
   //dispatch -> gets info from dispatch and returns new state
-  const [state, dispatch] = useReducer(reducer, 0);
+  const [count, dispatch] = useReducer(reducer, 0);
 
   return (
     <>
-      <div>Counter: {state}</div>
+      <div>Counter: {count}</div>
       <button onClick={() => dispatch('inc')}>Increment</button>
       <button onClick={() => dispatch('dec')}>Decrement</button>
       <button onClick={() => dispatch('reset')}>Reset</button>

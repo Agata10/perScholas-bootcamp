@@ -3,7 +3,7 @@ import './App.css';
 import Parent from './components/Parent';
 
 //step 1. create a context
-const FamilyContext = createContext();
+export const FamilyContext = createContext();
 
 function App() {
   const [style, setStyle] = useState({

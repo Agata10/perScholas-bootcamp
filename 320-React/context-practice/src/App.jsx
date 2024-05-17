@@ -29,7 +29,7 @@ function App() {
       <br />
       {/* Step 2: Provide the context {and it's values} to nested components */}
       <FamilyContext.Provider value={style}>
-        <Parent style={style} changeStyle={changeStyle} />
+        <Parent />
       </FamilyContext.Provider>
     </div>
   );

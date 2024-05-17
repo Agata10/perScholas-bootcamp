@@ -1,7 +1,7 @@
-function GreatGrandChild(props) {
+function GreatGrandChild() {
   return (
     <div>
-      <span style={props.style}>GreatGrandChild</span> <br />
+      <span>GreatGrandChild</span> <br />
     </div>
   );
 }

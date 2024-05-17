@@ -1,11 +1,11 @@
 import Child from './Child';
 
-function Parent(props) {
+function Parent() {
   return (
     <div>
       <span>Parent</span>
       <br />|
-      <Child style={props.style} />
+      <Child />
     </div>
   );
 }

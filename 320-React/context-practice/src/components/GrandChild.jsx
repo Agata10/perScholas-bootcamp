@@ -1,10 +1,10 @@
 import GreatGrandChild from './GreatGrandChild';
 
-function GrandChild(props) {
+function GrandChild() {
   return (
     <div>
       <span>GrandChild</span> <br /> |
-      <GreatGrandChild style={props.style} />
+      <GreatGrandChild />
     </div>
   );
 }
